@@ -6,8 +6,8 @@
  */
 export default function taskBlock(trueOrFalse) {
   // Initialiser les variables dans la portée de la fonction
-  let task = false;
-  let task2 = true;
+  var task = false;
+  var task2 = true;
 
   if (trueOrFalse) {
     // Ces nouvelles variables sont limitées à ce bloc uniquement
