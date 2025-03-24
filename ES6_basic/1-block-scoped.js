@@ -6,14 +6,14 @@
  */
 export default function taskBlock(trueOrFalse) {
   // Initialiser les variables dans la portée de la fonction
-  let task = false;
-  let task2 = true;
+  const task = false;
+  const task2 = true;
 
   if (trueOrFalse) {
     // Ces nouvelles variables sont limitées à ce bloc uniquement
     // Elles n'affectent pas les variables externes du même nom
-    let task = true;
-    let task2 = false;
+    const task = true;
+    const task2 = false;
   }
 
   // Retourner les variables de la portée externe, qui restent inchangées
