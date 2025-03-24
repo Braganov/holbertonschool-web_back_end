@@ -1,33 +1,31 @@
-# Notions de base d'ES6
+# Principes de base ES6
 
-Ce projet contient des tâches pour apprendre à utiliser les fonctionnalités ES6 en JavaScript.
+Ce projet contient des exercices pour apprendre les fonctionnalités ES6 (ECMAScript 2015) :
 
 ## Tâches
 
-### 0. Const ou let ?
+1. **Portée de bloc** - Comprendre var, let et const
+2. **Fonctions fléchées** - Conversion de fonctions standard en fonctions fléchées
+3. **Paramètres par défaut** - Utilisation des valeurs de paramètres par défaut
+4. **Syntaxe du paramètre rest** - Utilisation du paramètre rest
+5. **Syntaxe spread** - Utilisation de l'opérateur spread pour concaténer des tableaux et des chaînes
+6. **Littéraux de modèle** - Utilisation des chaînes de modèle pour l'interpolation
+7. **Syntaxe abrégée des propriétés d'objet** - Création d'objets simplifiée
+8. **Noms de propriété calculés** - Utilisation de noms de propriété dynamiques
+9. **Propriétés de méthode ES6** - Syntaxe concise pour les méthodes
+10. **Boucle For...of** - Construction d'itération moderne
+11. **Itérateur** - Création d'objets employés
+12. **Créons un objet rapport** - Création et manipulation avancées d'objets
 
-- Fichier: `0-constants.js`
-- Description: Modifier les fonctions pour utiliser const et let au lieu de var
-  - `taskFirst`: Utiliser const
-  - `taskNext`: Utiliser let
-  - Le code démontre quand utiliser const ou let selon que les variables doivent être réassignées ou non
+## Utilisation
 
-## Installation
+Chaque tâche a un fichier JavaScript correspondant et un fichier principal pour les tests :
 
 ```bash
-# Installer les dépendances
-npm install
-
-# Exécuter les tests
-npm run dev [nom_du_fichier]
+npm run dev <nom-du-fichier-principal>
 ```
 
-## Exigences
-
-- Tous vos fichiers seront exécutés sur Ubuntu 18.04 LTS en utilisant NodeJS 12.11.x
-- Éditeurs autorisés : vi, vim, emacs, Visual Studio Code
-- Tous vos fichiers doivent se terminer par une nouvelle ligne
-- Un fichier README.md à la racine du dossier du projet est obligatoire
-- Votre code doit utiliser l'extension js
-- Votre code sera testé en utilisant le framework de test Jest
-- Votre code sera analysé en utilisant le linter ESLint avec des règles spécifiques qui seront fournies
+Par exemple :
+```bash
+npm run dev 2-main.js
+```
