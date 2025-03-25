@@ -12,8 +12,6 @@ export default function taskBlock(trueOrFalse) {
   if (trueOrFalse) {
     // Ces nouvelles variables sont limitées à ce bloc uniquement
     // Elles n'affectent pas les variables externes du même nom
-    const task = true;
-    const task2 = false;
   }
 
   // Retourner les variables de la portée externe, qui restent inchangées
