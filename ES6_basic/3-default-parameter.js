@@ -7,6 +7,5 @@
  * @return {number} Somme de tous les paramètres
  */
 export default function getSumOfHoods(initialNumber, expansion1989 = 89, expansion2019 = 19) {
-  // Retourner la somme de tous les paramètres (en utilisant les valeurs par défaut si non fournies)
-  return initialNumber + expansion1989 + expansion2019;
+  return initialNumber + expansion1989 + expansion2019; // Retourner la somme de tous les paramètres (en utilisant les valeurs par défaut si non fournies)
 }
