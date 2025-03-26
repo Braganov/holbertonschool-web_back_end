@@ -47,7 +47,3 @@ Pour vérifier le style de code avec ESLint :
 ```bash
 npm run lint <nom-du-fichier>
 ```
-
-## Auteur
-
-- Jean-Philippe Braga
