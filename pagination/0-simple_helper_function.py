@@ -7,7 +7,7 @@ from typing import Tuple
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
-    Calcule les indices de début et de fin pour une page et une taille de page données.
+    Calcule les indices de début et de fin pour une page et une taille de page.
 
     Args:
         page (int): Numéro de la page (commençant à 1).
@@ -18,5 +18,4 @@ def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
     start_index = (page - 1) * page_size
     end_index = start_index + page_size
-    
     return (start_index, end_index)
