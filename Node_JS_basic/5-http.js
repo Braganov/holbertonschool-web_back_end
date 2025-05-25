@@ -1,27 +1,24 @@
 const http = require('http');
+
 const countStudents = require('./3-read_file_async');
 
-const app = http.createServer(async (req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
+const database = process.argv[2];
 
-  if (req.url === '/') {
+const app = http.createServer((req, res) => {
+  const { url } = req;
+
+  if (url === '/students') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    countStudents(database)
+      .then((output) => {
+        res.end(`This is the list of our students\n${output}`);
+      })
+      .catch((error) => {
+        res.end(`This is the list of our students\n${error.message}`);
+      });
+  } else {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('Hello Holberton School!');
-  } else if (req.url === '/students') {
-    let responseText = 'This is the list of our students\n';
-    try {
-      await countStudents(process.argv[2])
-        .then(() => {
-          res.end(responseText);
-        })
-        .catch((error) => {
-          responseText += error.message;
-          res.end(responseText);
-        });
-    } catch (error) {
-      responseText += 'Cannot load the database';
-      res.end(responseText);
-    }
   }
 });
 

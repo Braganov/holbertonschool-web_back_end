@@ -1,34 +1,41 @@
-const fs = require('fs').promises;
+import fs from 'fs/promises';
 
-const readDatabase = (filePath) => {
-  return new Promise((resolve, reject) => {
-    fs.readFile(filePath, 'utf8')
-      .then((data) => {
-        const lines = data.trim().split('\n');
-        const headers = lines[0].split(',');
-        const fieldIndex = headers.indexOf('field');
-        const firstNameIndex = headers.indexOf('firstname');
-        
-        const students = lines.slice(1).filter(line => line.length > 0);
-        const fields = {};
-        
-        students.forEach((student) => {
-          const row = student.split(',');
-          const field = row[fieldIndex];
-          const firstName = row[firstNameIndex];
-          
-          if (!fields[field]) {
-            fields[field] = [];
+async function readDatabase(path) {
+  try {
+    const data = await fs.readFile(path, 'utf8');
+    const lines = data.split('\n').filter((line) => line.trim() !== '');
+    const header = lines[0].split(',');
+    const fieldIndex = header.indexOf('field');
+    const firstNameIndex = header.indexOf('firstname');
+
+    if (fieldIndex === -1 || firstNameIndex === -1) {
+      throw new Error('Malformed CSV file');
+    }
+
+    const studentsByField = {};
+
+    for (let i = 1; i < lines.length; i += 1) {
+      const line = lines[i].trim();
+
+      if (line) {
+        const parts = line.split(',');
+        if (parts.length > fieldIndex && parts.length > firstNameIndex) {
+          const field = parts[fieldIndex];
+          const firstName = parts[firstNameIndex];
+
+          if (!studentsByField[field]) {
+            studentsByField[field] = [];
           }
-          fields[field].push(firstName);
-        });
-        
-        resolve(fields);
-      })
-      .catch(() => {
-        reject(new Error('Cannot load the database'));
-      });
-  });
-};
 
-module.exports = readDatabase;
+          studentsByField[field].push(firstName);
+        }
+      }
+    }
+
+    return studentsByField;
+  } catch (err) {
+    return Promise.reject(err);
+  }
+}
+
+export default readDatabase;
